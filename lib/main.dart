@@ -65,24 +65,25 @@ class _FuturePageState extends State<FuturePage> {
       result = total.toString();
     });
   }
+
   late Completer completer;
 
-Future getNumber() {
-  completer = Completer<int>();
-  calculate();
-  return completer.future;
-}
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
 
-Future calculate() async {
-  await Future.delayed(const Duration(seconds : 5));
-  completer.complete(42);
-}
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds: 5));
+    completer.complete(42);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Back from the future'),
+        title: const Text('Lipiya'),
       ),
       body: Center(
         child: Column(children: [
@@ -91,7 +92,7 @@ Future calculate() async {
             child: const Text('GO!'),
             onPressed: () {
               //count();
-              getNumber().then((value){
+              getNumber().then((value) {
                 setState(() {
                   result = value.toString();
                 });
